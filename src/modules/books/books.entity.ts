@@ -3,9 +3,6 @@ import { BaseEntity } from 'src/core/entity/base.entity';
 
 @Entity('books')
 export class Book extends BaseEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
-
   @Column()
   title: string;
 
