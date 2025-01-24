@@ -53,7 +53,7 @@ export class BooksRepository {
 
     let result: Book | null = null;
     try {
-      result = await this.booksOrmRepository.findOneBy({ id });
+      result = await this.booksOrmRepository.findOne({ where: { id } });
     } catch (error) {
       throw new Error('Database query failed');
     }
