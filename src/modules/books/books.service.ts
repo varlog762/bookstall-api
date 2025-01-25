@@ -20,7 +20,7 @@ export class BooksService {
   async createBook(dto: any): Promise<void> {
     const book = new Book();
     book.title = dto.title;
-    book.ageRestriction = dto.ageRestrict;
+    book.ageRestriction = parseInt(dto.ageRestriction);
     book.author = dto.author;
 
     await this.booksRepository.save(book);

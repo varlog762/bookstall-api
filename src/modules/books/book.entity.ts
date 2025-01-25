@@ -9,7 +9,7 @@ export class Book extends BaseEntity {
   @Column()
   author: string;
 
-  @Column()
+  @Column({ nullable: true })
   ageRestriction: number;
 
   @Column({ nullable: true })
