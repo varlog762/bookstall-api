@@ -1,3 +1,4 @@
+import { Transform } from 'class-transformer';
 import {
   IsInt,
   IsOptional,
@@ -15,6 +16,9 @@ export class CreateBookDto {
   @IsInt()
   @Min(5)
   @Max(120)
+  @Transform((params) => {
+    return Number(params.value);
+  })
   ageRestriction: number;
 
   @IsString()
