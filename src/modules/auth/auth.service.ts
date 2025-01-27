@@ -30,7 +30,7 @@ export class AuthService {
 
     const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
 
-    if (!user) {
+    if (!isPasswordValid) {
       throw new UnauthorizedException(); // Вернет код 401
     }
     return {
