@@ -9,9 +9,9 @@ import { AuthController } from './auth.controller';
   imports: [
     PassportModule,
     JwtModule.register({
-      secret: 'secret_key',
+      secret: 'secret_key', // в идеале секретный ключ должен храниться в переменных окружения и подключаться с помощью ConfigModule
       signOptions: {
-        expiresIn: '60m',
+        expiresIn: '60m', // время жизни токена
       },
     }),
   ],

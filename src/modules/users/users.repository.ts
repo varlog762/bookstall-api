@@ -15,7 +15,7 @@ export class UsersRepository {
     return result;
   }
 
-  findByEmail(email: string) {
+  findByEmail(email: string): Promise<User | null> {
     return this.usersOrmRepository.findOneBy({ email });
   }
 
