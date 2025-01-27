@@ -33,7 +33,6 @@ export class AuthService {
     if (!user) {
       throw new UnauthorizedException(); // Вернет код 401
     }
-
     return {
       userId: user.id,
     };
@@ -45,7 +44,7 @@ export class AuthService {
    * @returns An object containing the JWT token.
    */
   login(userId: string): { accessToken: string } {
-    const accessToken = this.jwtService.sign(userId);
+    const accessToken = this.jwtService.sign({ userId });
 
     return { accessToken };
   }
