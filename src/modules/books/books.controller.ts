@@ -7,10 +7,13 @@ import {
   Delete,
   Put,
   HttpCode,
+  UseGuards,
+  Request,
 } from '@nestjs/common';
 import { BooksService } from './books.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
+import { JwtAuthGuard } from 'src/core/guards/jwt-auth.guard';
 
 @Controller('books')
 export class BooksController {
@@ -39,11 +42,11 @@ export class BooksController {
   // Создать новую книгу
   @Post()
   @HttpCode(201)
-  async createBook(@Body() bookDto: CreateBookDto) {
-    console.dir(bookDto);
+  @UseGuards(JwtAuthGuard)
+  async createBook(@Body() bookDto: CreateBookDto, @Request() req) {
     // необходимо вызвать соответствующий метод сервиса и вернуть результат
     //const result = await this.booksService.someMethod();
-    return this.booksService.createBook(bookDto);
+    return this.booksService.createBook(bookDto, req.user.userId);
   }
 
   // // Обновить информацию о книге

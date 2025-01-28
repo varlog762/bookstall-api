@@ -9,6 +9,6 @@ export class AuthController {
   @UseGuards(LocalAuthGuard) // Подключает гуарды (передаем ему наш гуард)
   @Post('login')
   login(@Request() req) {
-    return this.authService.login(req.userId);
+    return this.authService.login(req.user.userId);
   }
 }
